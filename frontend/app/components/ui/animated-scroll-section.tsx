@@ -91,7 +91,7 @@ export function AnimatedScrollSection({
     <section 
       id={id}
       ref={containerRef}
-      className={cn("relative overflow-hidden min-h-screen py-16 md:py-24 lg:h-screen flex items-center justify-center", className)}
+      className={cn("relative overflow-hidden min-h-screen py-16 md:py-24 lg:h-screen flex items-center justify-center pb-32 md:pb-48", className)}
     >
       <div className="container mx-auto px-4 relative z-10">
         <motion.h2 

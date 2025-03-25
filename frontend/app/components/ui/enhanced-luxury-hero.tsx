@@ -44,7 +44,7 @@ export function EnhancedLuxuryHero({
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-screen flex items-center overflow-hidden bg-gradient-to-r from-[#EEE7E1] to-[#F4F4F4]"
+      className="relative w-full h-screen flex items-center overflow-hidden bg-gradient-to-r from-[#EEE7E1] to-[#F4F4F4] pt-16 md:pt-0"
     >
       {/* Decorative line element */}
       <div className="absolute left-0 top-0 h-[1px] w-full bg-[#58463B]/10" />

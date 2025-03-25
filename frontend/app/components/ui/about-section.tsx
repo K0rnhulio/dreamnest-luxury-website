@@ -65,7 +65,7 @@ export function AboutSection({
     <section
       className={cn(
         "relative overflow-hidden min-h-screen py-16 md:py-24 lg:h-screen flex items-center justify-center",
-        "bg-gradient-to-r from-[#EEE7E1] to-[#F4F4F4]",
+        "bg-gradient-to-r from-[#EEE7E1] to-[#F4F4F4] mt-16 md:mt-0",
         className
       )}
     >
