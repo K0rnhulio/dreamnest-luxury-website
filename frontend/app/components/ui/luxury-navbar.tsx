@@ -59,6 +59,7 @@ export function LuxuryNavbar({
 
   return (
     <header
+      id="luxury-navbar"
       className={cn(
         "fixed top-0 left-0 right-0 z-50 w-full py-4 transition-all duration-300",
         scrolled 

@@ -4,6 +4,7 @@ import "./globals.css";
 import "./styles/animations.css";
 import './styles/fonts.css';
 import { LuxuryNavbar } from "./components/ui/luxury-navbar";
+import { NavbarProvider } from "./contexts/navbar-context";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,8 +41,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <LuxuryNavbar items={navItems} />
-        {children}
+        <NavbarProvider>
+          <LuxuryNavbar items={navItems} />
+          <main className="pt-navbar">
+            {children}
+          </main>
+        </NavbarProvider>
       </body>
     </html>
   );
