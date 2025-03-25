@@ -1,0 +1,147 @@
+@keyframes reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes appear-zoom {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-reveal {
+  animation: reveal 1s cubic-bezier(0.25, 0.4, 0.25, 1) forwards;
+}
+
+.animate-appear {
+  animation: appear 1.2s cubic-bezier(0.25, 0.4, 0.25, 1) forwards;
+}
+
+.animate-appear-zoom {
+  animation: appear-zoom 1.5s cubic-bezier(0.25, 0.4, 0.25, 1) forwards;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+.delay-600 {
+  animation-delay: 600ms;
+}
+
+.delay-700 {
+  animation-delay: 700ms;
+}
+
+.delay-800 {
+  animation-delay: 800ms;
+}
+
+.delay-900 {
+  animation-delay: 900ms;
+}
+
+.delay-1000 {
+  animation-delay: 1000ms;
+}
+
+.bg-radial-gradient {
+  background: radial-gradient(circle at center, rgba(133, 97, 75, 0.2) 0%, transparent 70%);
+}
+
+/* Handwriting SVG path animation */
+@keyframes drawStroke {
+  0% {
+    stroke-dashoffset: 100%;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.svg-text-path {
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 100%;
+  animation: drawStroke 2.5s ease forwards;
+  fill: transparent;
+  stroke: #58463B;
+  stroke-width: 1px;
+}
+
+/* Text reveal with gradient effect */
+@keyframes textReveal {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+.text-reveal {
+  display: inline-block;
+  position: relative;
+  animation: textReveal 2s cubic-bezier(0.77, 0, 0.18, 1) forwards;
+}
+
+/* Enhanced handwriting animation */
+.handwriting-text {
+  position: relative;
+  display: inline-block;
+}
+
+.handwriting-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #F4F4F4, transparent);
+  animation: handwritingEffect 3s ease-in-out infinite;
+}
+
+@keyframes handwritingEffect {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
