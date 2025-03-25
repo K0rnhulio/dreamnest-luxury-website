@@ -22,6 +22,12 @@ export function NavbarProvider({ children }: { children: React.ReactNode }) {
         
         // Update CSS variable
         document.documentElement.style.setProperty('--navbar-height', `${height}px`)
+        
+        // Apply padding to main content
+        const mainContent = document.querySelector('main')
+        if (mainContent) {
+          mainContent.style.paddingTop = `${height}px`
+        }
       }
     }
 

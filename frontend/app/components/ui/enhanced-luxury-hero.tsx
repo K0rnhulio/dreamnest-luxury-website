@@ -44,121 +44,123 @@ export function EnhancedLuxuryHero({
   return (
     <section
       ref={containerRef}
-      className="relative w-full h-screen flex items-center overflow-hidden bg-gradient-to-r from-[#EEE7E1] to-[#F4F4F4]"
+      className="relative w-full min-h-screen flex items-center overflow-hidden bg-gradient-to-r from-[#EEE7E1] to-[#F4F4F4]"
     >
       {/* Decorative line element */}
       <div className="absolute left-0 top-0 h-[1px] w-full bg-[#58463B]/10" />
       <div className="absolute left-1/4 top-0 h-full w-[1px] bg-[#58463B]/5" />
       <div className="absolute right-1/4 top-0 h-full w-[1px] bg-[#58463B]/5" />
 
-      <div className="relative mx-auto grid max-w-7xl w-full grid-cols-1 px-4 md:grid-cols-2 md:px-6">
-        {/* Content */}
-        <div className="relative z-10 flex flex-col justify-center md:pr-8 lg:pr-16">
-          <motion.div
-            custom={0}
-            variants={fadeUpVariants}
-            initial="hidden"
-            animate="visible"
-            className="mb-2 inline-flex"
-          >
-            <span 
-              className="text-sm uppercase tracking-widest text-[#85614B]"
-              style={{ fontFamily: "DM Sans, sans-serif" }}
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 pt-32 md:pt-28 lg:pt-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          {/* Content */}
+          <div className="relative z-10 flex flex-col justify-center md:pr-8 lg:pr-16">
+            <motion.div
+              custom={0}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              className="mb-2 inline-flex"
             >
-              {title}
-            </span>
-          </motion.div>
+              <span 
+                className="text-sm uppercase tracking-widest text-[#85614B]"
+                style={{ fontFamily: "DM Sans, sans-serif" }}
+              >
+                {title}
+              </span>
+            </motion.div>
 
-          <motion.h1
-            custom={1}
-            variants={fadeUpVariants}
-            initial="hidden"
-            animate="visible"
-            className="mb-6 text-4xl font-medium leading-tight tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
-            style={{ 
-              fontFamily: "SVN-BonVoyage, serif",
-              color: "#58463B" 
-            }}
-          >
-            {subtitle}
-          </motion.h1>
-
-          <motion.div
-            custom={2}
-            variants={fadeUpVariants}
-            initial="hidden"
-            animate="visible"
-            className="max-w-md"
-          >
-            <p 
-              className="text-base leading-relaxed text-[#58463B]/80 md:text-lg"
-              style={{ fontFamily: "DM Sans, sans-serif" }}
+            <motion.h1
+              custom={1}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              className="mb-6 text-4xl font-medium leading-tight tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
+              style={{ 
+                fontFamily: "SVN-BonVoyage, serif",
+                color: "#58463B" 
+              }}
             >
-              {description}
-            </p>
-          </motion.div>
+              {subtitle}
+            </motion.h1>
 
-          <motion.div
-            custom={3}
-            variants={fadeUpVariants}
-            initial="hidden"
-            animate="visible"
-            className="mt-8"
-          >
-            <Link
-              href={ctaHref}
-              className="group inline-flex items-center border-b-2 border-[#85614B] bg-transparent px-0 py-2 text-base font-medium text-[#85614B] transition-all duration-300 hover:border-[#85614B]/70 hover:text-[#85614B]/90"
-              style={{ fontFamily: "DM Sans, sans-serif" }}
+            <motion.div
+              custom={2}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              className="max-w-md"
             >
-              {ctaText}
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-          </motion.div>
-        </div>
+              <p 
+                className="text-base leading-relaxed text-[#58463B]/80 md:text-lg"
+                style={{ fontFamily: "DM Sans, sans-serif" }}
+              >
+                {description}
+              </p>
+            </motion.div>
 
-        {/* Image */}
-        <div className="relative mt-12 md:mt-0 h-full flex items-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.5, ease: [0.25, 0.4, 0.25, 1], delay: 0.2 }}
-            className="relative h-[450px] w-full overflow-hidden md:h-[550px] lg:h-[80vh]"
-          >
-            <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#85614B]/20 to-transparent" />
-            {imageSrc.startsWith('http') || imageSrc.startsWith('/') ? (
-              <Image
-                src={imageSrc}
-                alt={imageAlt}
-                fill
-                className="object-cover object-center"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-              />
-            ) : (
-              <Image
-                src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageSrc}`}
-                alt={imageAlt}
-                fill
-                className="object-cover object-center"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-              />
-            )}
-          </motion.div>
+            <motion.div
+              custom={3}
+              variants={fadeUpVariants}
+              initial="hidden"
+              animate="visible"
+              className="mt-8"
+            >
+              <Link
+                href={ctaHref}
+                className="group inline-flex items-center border-b-2 border-[#85614B] bg-transparent px-0 py-2 text-base font-medium text-[#85614B] transition-all duration-300 hover:border-[#85614B]/70 hover:text-[#85614B]/90"
+                style={{ fontFamily: "DM Sans, sans-serif" }}
+              >
+                {ctaText}
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+              </Link>
+            </motion.div>
+          </div>
 
-          {/* Decorative elements */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1 }}
-            className="absolute -bottom-4 -left-4 h-24 w-24 border border-[#85614B]/20"
-          />
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.2 }}
-            className="absolute -right-4 top-4 h-24 w-24 border border-[#85614B]/20"
-          />
+          {/* Image */}
+          <div className="relative mt-12 md:mt-0 h-full flex items-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.5, ease: [0.25, 0.4, 0.25, 1], delay: 0.2 }}
+              className="relative h-[450px] w-full overflow-hidden md:h-[550px] lg:h-[80vh]"
+            >
+              <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#85614B]/20 to-transparent" />
+              {imageSrc.startsWith('http') || imageSrc.startsWith('/') ? (
+                <Image
+                  src={imageSrc}
+                  alt={imageAlt}
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                />
+              ) : (
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${imageSrc}`}
+                  alt={imageAlt}
+                  fill
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority
+                />
+              )}
+            </motion.div>
+
+            {/* Decorative elements */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1 }}
+              className="absolute -bottom-4 -left-4 h-24 w-24 border border-[#85614B]/20"
+            />
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 1.2 }}
+              className="absolute -right-4 top-4 h-24 w-24 border border-[#85614B]/20"
+            />
+          </div>
         </div>
       </div>
     </section>
