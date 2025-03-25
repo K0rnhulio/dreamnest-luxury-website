@@ -62,7 +62,7 @@ export function TargetAudienceSection({
   const subtitleColor = theme === 'light' ? 'text-[#85614B]' : 'text-[#D0B8A8]';
   const descriptionColor = theme === 'light' ? 'text-neutral-700' : 'text-neutral-200';
   const borderColor = theme === 'light' ? 'border-[#85614B]' : 'border-[#D0B8A8]';
-  const buttonVariant = theme === 'light' ? 'default' : 'outline';
+  const buttonVariant = theme === 'light' ? 'primary' : 'outline';
 
   return (
     <section 
