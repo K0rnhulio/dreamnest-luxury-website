@@ -117,7 +117,7 @@ export function LuxuryNavbar({
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div 
-              className="fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-[#F4F4F4]/98 backdrop-blur-md shadow-xl z-50 mobile-menu-container"
+              className="fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-[#F4F4F4]/98 backdrop-blur-md shadow-xl z-50 mobile-menu-container flex flex-col"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
@@ -125,8 +125,8 @@ export function LuxuryNavbar({
             >
               <div className="flex flex-col h-full">
                 {/* Menu Header */}
-                <div className="flex items-center justify-between p-6 border-b border-[#EEE7E1]">
-                  <Link href="/" className="text-[#58463B] text-2xl" onClick={() => setIsMobileMenuOpen(false)}>
+                <div className="flex items-center justify-between p-4 border-b border-[#EEE7E1]">
+                  <Link href="/" className="text-[#58463B] text-xl" onClick={() => setIsMobileMenuOpen(false)}>
                     <span style={{ fontFamily: "SVN-BonVoyage, serif" }}>DreamNest</span>
                   </Link>
                   <button 
@@ -134,18 +134,18 @@ export function LuxuryNavbar({
                     onClick={() => setIsMobileMenuOpen(false)}
                     aria-label="Close menu"
                   >
-                    <X className="h-6 w-6" />
+                    <X className="h-5 w-5" />
                   </button>
                 </div>
                 
                 {/* Menu Items */}
-                <nav className="flex-1 overflow-y-auto py-6 px-6">
-                  <div className="flex flex-col space-y-6">
+                <nav className="flex-1 overflow-y-auto py-4 px-6">
+                  <div className="flex flex-col space-y-4">
                     {items.map((item) => (
                       <Link
                         key={item.name}
                         href={item.url}
-                        className="text-[#58463B] text-lg font-medium hover:text-[#85614B] transition-colors border-b border-[#EEE7E1]/50 pb-4"
+                        className="text-[#58463B] text-lg font-medium hover:text-[#85614B] transition-colors border-b border-[#EEE7E1]/50 pb-3"
                         onClick={() => setIsMobileMenuOpen(false)}
                         style={{ fontFamily: "DM Sans, sans-serif" }}
                       >
@@ -156,7 +156,7 @@ export function LuxuryNavbar({
                 </nav>
                 
                 {/* Menu Footer */}
-                <div className="p-6 border-t border-[#EEE7E1]">
+                <div className="p-6 border-t border-[#EEE7E1] mt-auto">
                   <Link
                     href="#contact"
                     className="flex items-center justify-center rounded-none w-full px-6 py-3 text-sm font-medium text-white bg-[#85614B] hover:bg-[#85614B]/90 transition-colors border border-[#85614B]"
