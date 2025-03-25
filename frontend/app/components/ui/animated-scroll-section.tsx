@@ -14,6 +14,9 @@ const DEFAULT_SECONDARY_SUBTITLE = "Embrace the journey to your authentic self";
 
 interface AnimatedScrollSectionProps {
   content?: ScrollIntroContent;
+  heading?: string;
+  subtitle?: string;
+  buzzwords?: string[];
   className?: string;
   config?: AnimationConfig;
   id?: string;
@@ -28,6 +31,9 @@ interface AnimatedScrollSectionProps {
  */
 export function AnimatedScrollSection({
   content,
+  heading,
+  subtitle,
+  buzzwords,
   className = "",
   config = {},
   id = "scroll-intro"
@@ -66,19 +72,26 @@ export function AnimatedScrollSection({
     margin: "0px 0px 0px 0px" 
   });
   
+  // Animation config
+  const animationConfig = {
+    lineDelay: config?.lineDelay || 0.5,
+    lineSpeed: config?.lineSpeed || 3,
+    buzzwordDelay: config?.buzzwordDelay || 0.1,
+    buzzwordSpeed: config?.buzzwordSpeed || 0.5,
+    ...config
+  };
+  
   // Content values
-  const heading = content?.heading || DEFAULT_HEADING;
-  const subtitle = content?.subtitle || DEFAULT_SUBTITLE;
+  const headingValue = heading || content?.heading || DEFAULT_HEADING;
+  const subtitleValue = subtitle || content?.subtitle || DEFAULT_SUBTITLE;
   const secondarySubtitle = content?.secondarySubtitle || content?.flowerSubtitle || DEFAULT_SECONDARY_SUBTITLE;
+  const buzzwordsValue = buzzwords || content?.buzzwords || [];
   
   return (
     <section 
-      ref={containerRef}
       id={id}
-      className={cn(
-        "relative min-h-screen py-16 md:py-24 lg:h-screen flex flex-col items-center justify-center overflow-hidden",
-        className
-      )}
+      ref={containerRef}
+      className={cn("relative overflow-hidden min-h-screen py-16 md:py-24 lg:h-screen flex items-center justify-center", className)}
     >
       <div className="container mx-auto px-4 relative z-10">
         <motion.h2 
@@ -92,7 +105,7 @@ export function AnimatedScrollSection({
           animate={isHeadingInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          {heading}
+          {headingValue}
         </motion.h2>
         
         <motion.p 
@@ -106,7 +119,7 @@ export function AnimatedScrollSection({
           animate={isSubtitleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         >
-          {subtitle}
+          {subtitleValue}
         </motion.p>
         
         <div className="relative flex justify-center items-center mt-12 h-[50vh]">
@@ -122,11 +135,29 @@ export function AnimatedScrollSection({
                 initial={{ scaleY: 0 }}
                 animate={isLineInView ? { scaleY: 1 } : { scaleY: 0 }}
                 transition={{ 
-                  duration: 1.2, 
+                  duration: animationConfig.lineSpeed, 
                   ease: "easeOut", 
-                  delay: 0.4 
+                  delay: animationConfig.lineDelay 
                 }}
               />
+            </div>
+            
+            {/* Buzzwords that appear as the line grows */}
+            <div className="absolute left-0 top-0 h-full flex flex-col justify-between items-start py-4">
+              {buzzwordsValue.map((word, index) => (
+                <motion.div
+                  key={`buzzword-${index}`}
+                  className="text-[#58463B]/80 text-sm font-medium pl-4"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isLineInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                  transition={{ 
+                    duration: animationConfig.buzzwordSpeed, 
+                    delay: animationConfig.lineDelay + (index * animationConfig.buzzwordDelay) 
+                  }}
+                >
+                  {word}
+                </motion.div>
+              ))}
             </div>
           </div>
           

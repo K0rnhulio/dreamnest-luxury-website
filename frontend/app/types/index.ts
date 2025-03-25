@@ -12,6 +12,10 @@ export interface AnimationConfig {
   lineRange?: [number, number];
   secondarySubtitleRange?: [number, number];
   flowerConfig?: FlowerAnimationConfig;
+  lineDelay?: number;
+  lineSpeed?: number;
+  buzzwordDelay?: number;
+  buzzwordSpeed?: number;
 }
 
 export interface FlowerAnimationConfig {
